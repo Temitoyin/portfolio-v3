@@ -58,7 +58,7 @@ export default class RGBShiftEffect extends EffectShell {
 
         varying vec2 vUv;
 
-        vec3 rgbShift(sampler2D texture, vec2 uv, vec2 offset) {
+        vec3 rgbShift(sampler2D content, vec2 uv, vec2 offset) {
           float r = texture2D(uTexture,vUv + uOffset).r;
           vec2 gb = texture2D(uTexture,vUv).gb;
           return vec3(r,gb);
