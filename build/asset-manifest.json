@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fb1f4133.chunk.css",
+    "main.js": "/static/js/main.d210683c.chunk.js",
+    "main.js.map": "/static/js/main.d210683c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.554318c8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.554318c8.js.map",
+    "static/js/2.7e6c8eda.chunk.js": "/static/js/2.7e6c8eda.chunk.js",
+    "static/js/2.7e6c8eda.chunk.js.map": "/static/js/2.7e6c8eda.chunk.js.map",
+    "static/js/3.ce5e835a.chunk.js": "/static/js/3.ce5e835a.chunk.js",
+    "static/js/3.ce5e835a.chunk.js.map": "/static/js/3.ce5e835a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.fb1f4133.chunk.css.map": "/static/css/main.fb1f4133.chunk.css.map",
+    "static/js/2.7e6c8eda.chunk.js.LICENSE.txt": "/static/js/2.7e6c8eda.chunk.js.LICENSE.txt",
+    "static/media/lagos.70d80cb3.jpg": "/static/media/lagos.70d80cb3.jpg",
+    "static/media/profile.a7c44238.JPG": "/static/media/profile.a7c44238.JPG"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.554318c8.js",
+    "static/js/2.7e6c8eda.chunk.js",
+    "static/css/main.fb1f4133.chunk.css",
+    "static/js/main.d210683c.chunk.js"
+  ]
+}
