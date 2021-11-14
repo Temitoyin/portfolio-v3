@@ -1,0 +1,363 @@
+$col-one: #f0f5f9;
+$col-two: #090910;
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.loader{
+  width: 100vw;
+  background-color: black;
+  position: fixed;
+  height: 100vh;
+  z-index: 3;
+}
+.testFlight2 {
+  canvas {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.link {
+  // cursor: pointer;
+}
+
+.link img {
+  display: none;
+}
+
+  position: relative;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    // font-family: "Recoleta", sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    color: $col-one;
+  }
+
+  p,
+  li {
+    font-family: "Work Sans", sans-serif;
+  }
+}
+.topHeader {
+  width: 100vw;
+  position: relative;
+  height: 100vh;
+// background: #3B3B3B;
+// background: -webkit-linear-gradient(top, #3B3B3B, #FFFFFF);
+// background: -moz-linear-gradient(top, #3B3B3B, #FFFFFF);
+// background: linear-gradient(to bottom, #3B3B3B, #FFFFFF);
+  svg {
+    height: 100%;
+    width: 100vw;
+    circle {
+      color: $col-two;
+    }
+    mask {
+      width: 100vw;
+    }
+    image {
+      height: 100vh;
+    }
+  }
+}
+
+.navigation {
+  position: fixed;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background-color: white;
+  .left {
+    margin-left: 40px;
+    h1 {
+      font-family: 'Anton', sans-serif;
+      color: $col-two;
+      // cursor: pointer;
+    }
+  }
+  .right {
+    margin-right: 40px;
+    ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      width: 20vw;
+      li {
+        color: $col-two;
+        // cursor: pointer;
+        &:hover{
+          color: #FF0000;
+        }
+      }
+      .linkActive{
+        border-bottom: 2px solid $col-two;
+      }
+    }
+  }
+  p {
+    color: white;
+    z-index: 100;
+  }
+}
+.mainText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  z-index: 2;
+  h2 {
+    font-size: 80px;
+  }
+  .greeting {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  .info,
+  .location {
+    font-size: 70px;
+  }
+  p {
+    font-size: 50px;
+    background-color: #000000;
+background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+  .info,
+  .location {
+    // cursor: pointer;
+    border-bottom: 2px solid #000000;
+// background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .location {
+    width: 100%;
+  }
+}
+.works {
+  height: 100vh;
+  background-color: #fbfbfb;
+  padding-top: 200px;
+  position: relative;
+  a {
+    text-decoration: none;
+  }
+  .heading {
+    color: $col-two;
+    font-size: 40px;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  img {
+    position: absolute;
+    width: 550px;
+    height: 350px;
+    transform: translateX(-50%) translateY(-50%);
+    border: 0.3px solid $col-two;
+    border: none;
+    display: none;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+  }
+  & > div:nth-child(2) {
+    border-top: 1px solid #52616b;
+  }
+  .project {
+    border-bottom: 1px solid #52616b;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    z-index: 10;
+    &__text {
+      z-index: 2;
+      h2 {
+        margin: 0;
+        font-size: 70px;
+        color: $col-two;
+      }
+      p {
+        margin: 0;
+        padding: 16px 0;
+        color: $col-two;
+      }
+    }
+
+    &__arrow {
+      width: 70px;
+      height: 70px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        width: 1.076875rem;
+        height: 1.076875rem;
+        &:hover {
+          transform: translateX(10);
+          fill: $col-one;
+        }
+      }
+    }
+    &:hover {
+      // cursor: pointer;
+      //   .project {
+      .project__arrow {
+        border: 50%;
+        animation-name: forward;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+        svg {
+          transform: translateX(10);
+          fill: $col-one;
+        }
+      }
+      //   }
+    }
+  }
+}
+.about {
+  padding: 0 30px;
+  height: 100vh;
+  &__heading {
+    // display: flex;
+    // align-items: center;
+    padding-top: 2rem;
+    h3 {
+      text-align: center;
+      font-size: 70px;
+      color: $col-two;
+      margin-bottom: 2.5rem;
+    }
+    p {
+      text-align: center;
+      font-size: 23px;
+      line-height: 1.9rem;
+    }
+  }
+  &__info{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__links{
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+    margin: 0 auto;
+    a{
+      text-decoration: underline;
+      color: $col-two;
+      font-weight: 700;
+    }
+    a:hover{
+      color: #FF0000;
+      p{
+      color: #FF0000;
+      }
+    }
+  }
+  .toolStack {
+    margin-top: 3rem auto 0 auto;
+    h4 {
+      font-size: 30px;
+      color: $col-two;
+      margin: 0;
+    }
+  }
+  .categories {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    h3 {
+      font-size: 30px;
+      color: $col-two;
+      margin-top: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        padding: 5px 0;
+        color: $col-two;
+        font-size: 20px;
+      }
+    }
+  }
+}
+.contact{
+  height: 92vh;
+}
+.footer {
+  height: 8vh;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  color: $col-one;
+  background-color: $col-two;
+  align-items: center;
+
+  .footer__copyright {
+    padding-top: 0.5rem;
+    text-align: center;
+  }
+
+  .socialmedia__icons {
+    i {
+      color: $col-one;
+      margin-right: 10px;
+    }
+  }
+}
+
+.itemCssMask img {
+  mask-image: url(http://yoksel.github.io/Sandbox/img/tiles/tile-transparent-black.png),
+    linear-gradient(-45deg, black 20%, transparent 50%);
+  mask-repeat: space;
+}
+.item--svg-mask-html img,
+.item--svg-mask-svg image {
+  mask: url(#masking);
+}
+
+@keyframes forward {
+  0% {
+    width: 0;
+    height: 0;
+    border-radius: 20%;
+  }
+  100% {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: $col-two;
+  }
+}
+canvas {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  pointer-events: none;
+}
