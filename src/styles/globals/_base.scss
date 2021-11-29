@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0;
+  transition: color 0.3s ease-in-out;
+  min-width: 100vw;
+}
+
+body {
+  //   font-family: $global-font-family;
+  //   color: $body-font-color;
+  //   font-size: $body-font-size;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+.hide {
+  display: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font-family;
+  padding: 0;
+  margin: 0;
+}
+p,
+li {
+  font-family: $text-font-family;
+}
+
+//lists
+ul {
+  list-style-type: none;
+}
+//links
+// a {
+//   color: inherit;
+//   cursor: pointer;
+//   text-decoration: inherit;
+// }
+
+// Reset images for responsive behavior
+// img {
+//   height: auto;
+//   max-width: 100%;
+// }
+
+// Set vertical alignment for svg elements
+svg {
+  vertical-align: middle;
+}
