@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    container_name: bankaidevportfolio
+    image: bankaidevportfolio
+    build: .
+    networks:
+      - main_network
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: yarn start
+
+volumes:
+  node_modules:
+
+networks:
+  main_network:
+    driver: bridge

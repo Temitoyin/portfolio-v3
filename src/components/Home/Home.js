@@ -3,14 +3,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-restricted-globals */
 import React, { useEffect, useRef } from "react";
-import Icon from "../Icon/icon";
+import Icon from "components/Icon/icon";
 import { Link } from "react-scroll";
-import img1 from "../../img/profile.JPG";
-import img2 from "../../img/lagos.jpg";
+import img1 from "img/profile.JPG";
+import img2 from "img/lagos.jpg";
 import styles from "./Home.module.scss";
 import gsap from "gsap";
-import "../../js/Math.js";
-import RGBShiftEffect from "../../js/RGBShiftEffect.js";
+import "utils/Math.js";
+import RGBShiftEffect from "utils/RGBShiftEffect.js";
 import imagesLoaded from "imagesloaded";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,8 +22,6 @@ const TestFlight2 = () => {
   let mainContainer = useRef(null);
   let effectWrapper = useRef(null);
   let effectLinks;
-
-  let scroll;
 
   useEffect(() => {
     const items = gsap.utils.toArray("#project");
@@ -64,12 +62,14 @@ const TestFlight2 = () => {
         toggleActions: "play complete reset reset",
         start: "top 10%",
         end: "top 75%",
-        markers: true,
+        // markers: true,
       },
     });
     gsap.to("#aboutlink, #projectlink, #contactlink, #logo", {
       css: {
-        color: "black",
+        // color: "black",
+        backgroundImage:
+          "linear-gradient(90deg, #0300e2, #0300e2 50%, #000000 0 )",
       },
       duration: 1,
       scrollTrigger: {
@@ -125,6 +125,7 @@ const TestFlight2 = () => {
         gsap.set(imageRef.current, {
           attr: { src: imageData },
           ease: "power2.in",
+          delay: 0.5,
         });
       });
       el.addEventListener("mousemove", (e) => {
@@ -144,6 +145,7 @@ const TestFlight2 = () => {
         });
         gsap.set(imageRef.current, {
           ease: "power2.in",
+          delay: 0.5,
         });
       });
       el.addEventListener("mousemove", (e) => {
@@ -178,7 +180,7 @@ const TestFlight2 = () => {
           toggleActions: "play complete reverse reset",
           end: "10px 75%",
           start: "0 89%",
-          scrub: 0.2,
+          scrub: true,
         },
       });
     });
@@ -186,6 +188,7 @@ const TestFlight2 = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
+      console.log(imageRef.current, "we scrolling");
       gsap.set(imageRef.current, {
         css: {
           position: "fixed",
@@ -219,7 +222,7 @@ const TestFlight2 = () => {
         "#loader",
         {
           opacity: 1,
-          duration: "12s",
+          duration: 2,
           css: {
             backgroundColor: "black",
           },
@@ -259,398 +262,401 @@ const TestFlight2 = () => {
   return (
     <>
       <div id="loader" className={styles.loader}></div>
-      <div
-        className={styles.testFlight2}
-        data-scroll-container
-        ref={mainContainer}
-        id="main"
-      >
-        <div className={styles.navigationWrapper}>
-          <nav className={styles.navigation} id="navigation">
-            <div className={styles.left}>
-              <Link to="main" smooth="true">
-                <h1 id="logo">Bankai Dev</h1>
-              </Link>
-            </div>
-            <div className={styles.right}>
-              <ul>
-                <li id="projectlink">
-                  <Link
-                    to="works__container"
-                    activeClass={styles.linkActive}
-                    smooth={true}
-                    spy={true}
-                  >
-                    Projects
+      <div>
+        <div className={styles.viewPort} ref={mainContainer}>
+          <div className={styles.testFlight2} data-scroll-container id="main">
+            <div className={styles.navigationWrapper}>
+              <nav className={styles.navigation} id="navigation">
+                <div className={styles.left}>
+                  <Link to="main" smooth="true">
+                    <h1 id="logo">Bankai Dev</h1>
                   </Link>
-                </li>
-                <li id="aboutlink">
-                  <Link
-                    to="about"
-                    activeClass={styles.linkActive}
-                    smooth={true}
-                    spy={true}
-                  >
-                    About
-                  </Link>
-                </li>
-                <li
-                  id="contactlink"
-                  onClick={() =>
-                    scroll.scrollTo(
-                      document.querySelector("[data-scroll-contact]")
-                    )
-                  }
-                >
-                  <Link
-                    to="contact"
-                    smooth={true}
-                    activeClass={styles.linkActive}
-                    spy={true}
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-
-        <div className={styles.topHeader} ref={header}>
-          <div
-            className={styles.mainText}
-            id="effectWrapper"
-            ref={effectWrapper}
-          >
-            <p className={styles.greeting} id="greeting">
-              Hello
-            </p>
-            <div id="header__text">
-              <p id="intro__text">
-                <a
-                  aria-label="link-1"
-                  target="_blank"
-                  rel="noopener"
-                  draggable="false"
-                  className={styles.link}
-                  id="effect"
-                >
-                  <span className={styles.info} id="location">
-                    Temitoyin
-                  </span>{" "}
-                  <img className="content__img" src={img1} alt="img1" />
-                </a>{" "}
-                is an interesting Front-End developer from<br></br>
-              </p>
-              <p id="intro__text">
-                <a
-                  aria-label="link-1"
-                  target="_blank"
-                  rel="noopener"
-                  draggable="false"
-                  className={styles.link}
-                  id="effect"
-                >
-                  <span className={styles.location} id="location">
-                    Lagos Nigeria
-                  </span>{" "}
-                  <img className="content__img" src={img2} alt="img1" />
-                </a>
-                .
-              </p>
-            </div>
-          </div>
-        </div>
-        <section
-          className={styles.works}
-          data-scroll-works
-          id="works__container"
-          ref={worksContainer}
-        >
-          <h2 id="works" className={styles.heading}>
-            My Projects
-          </h2>
-          <img
-            src=""
-            id="projectImg"
-            ref={imageRef}
-            rel="preload"
-            alt="project"
-          />
-          <div className={styles.projectContainer}>
-            <a
-              href="https://distracted-euler-df595f.netlify.app/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={styles.project}
-                id="project"
-                data-image="https://res.cloudinary.com/bankai/image/upload/v1636551254/Portfolio/gdyqktez2jovdy2ycfnx.png"
-              >
-                <div className={styles.project__text} id="project">
-                  <h2
-                    id="link"
-                    data-image="https://res.cloudinary.com/bankai/image/upload/v1636551254/Portfolio/gdyqktez2jovdy2ycfnx.png"
-                  >
-                    Url Shortener
-                  </h2>
-                  <p
-                    id="link"
-                    data-image="https://res.cloudinary.com/bankai/image/upload/v1636551254/Portfolio/gdyqktez2jovdy2ycfnx.png"
-                  >
-                    Personal/ React, Axios, Scss
-                  </p>
                 </div>
-                <span className={styles.project__arrow}>
-                  <Icon name="arrow" />
-                </span>
-              </div>
-            </a>
+                <div className={styles.right}>
+                  <ul>
+                    <li id="projectlink">
+                      <Link
+                        to="works__container"
+                        activeClass={styles.linkActive}
+                        smooth={true}
+                        spy={true}
+                      >
+                        Projects
+                      </Link>
+                    </li>
+                    <li id="aboutlink">
+                      <Link
+                        to="about"
+                        activeClass={styles.linkActive}
+                        smooth={true}
+                        spy={true}
+                      >
+                        About
+                      </Link>
+                    </li>
+                    <li id="contactlink">
+                      <Link
+                        to="contact"
+                        smooth={true}
+                        activeClass={styles.linkActive}
+                        spy={true}
+                      >
+                        Contact
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
 
-            <div
-              className={styles.project}
-              id="project"
-              data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
-            >
-              <div className={styles.project__text} id="project">
-                <h2
-                  id="link"
-                  data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
+            <main>
+              <section className={styles.topHeader} ref={header}>
+                <div
+                  className={styles.mainText}
+                  id="effectWrapper"
+                  ref={effectWrapper}
                 >
-                  Dashood
+                  <p className={styles.greeting} id="greeting">
+                    Hello
+                  </p>
+                  <div id="header__text">
+                    <p id="intro__text">
+                      <a
+                        aria-label="link-1"
+                        target="_blank"
+                        rel="noopener"
+                        draggable="false"
+                        className={styles.link}
+                        id="effect"
+                      >
+                        <span className={styles.info} id="location">
+                          Temitoyin
+                        </span>{" "}
+                        <img className="content__img" src={img1} alt="img1" />
+                      </a>{" "}
+                      is an interesting Front-End developer from<br></br>
+                    </p>
+                    <p id="intro__text">
+                      <a
+                        aria-label="link-1"
+                        target="_blank"
+                        rel="noopener"
+                        draggable="false"
+                        className={styles.link}
+                        id="effect"
+                      >
+                        <span className={styles.location} id="location">
+                          Lagos Nigeria
+                        </span>{" "}
+                        <img className="content__img" src={img2} alt="img1" />
+                      </a>
+                      .
+                    </p>
+                  </div>
+                </div>
+              </section>
+              <section
+                className={styles.works}
+                data-scroll-works
+                id="works__container"
+                ref={worksContainer}
+              >
+                <h2 id="works" className={styles.heading}>
+                  My Projects
                 </h2>
-                <p
-                  id="link"
-                  data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
-                >
-                  Logistics/ Next, Redux, Rest, Scss
-                </p>
-              </div>
-              <span className={styles.project__arrow}>
-                <Icon name="arrow" className={styles.arrow} />
-              </span>
-            </div>
-            <a href="https://new.konga.com/" target="_blank" rel="noreferrer">
-              <div
-                className={styles.project}
-                id="project"
-                data-image="https://res.cloudinary.com/bankai/image/upload/v1636551885/Portfolio/dgfoao6dozilp9vw2kyr.png"
-              >
-                <div className={styles.project__text} id="project">
-                  <h2
-                    id="link"
-                    data-image="https://res.cloudinary.com/bankai/image/upload/v1636551885/Portfolio/dgfoao6dozilp9vw2kyr.png"
+                <img
+                  src=""
+                  id="projectImg"
+                  ref={imageRef}
+                  rel="preload"
+                  alt="project"
+                />
+                <div className={styles.projectContainer}>
+                  <a
+                    href="https://distracted-euler-df595f.netlify.app/"
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    konga SuperApp
-                  </h2>
-                  <p
-                    id="link"
-                    data-image="https://res.cloudinary.com/bankai/image/upload/v1636551885/Portfolio/dgfoao6dozilp9vw2kyr.png"
+                    <div
+                      className={styles.project}
+                      id="project"
+                      data-image="https://res.cloudinary.com/bankai/image/upload/v1636551254/Portfolio/gdyqktez2jovdy2ycfnx.png"
+                    >
+                      <div className={styles.project__text} id="project">
+                        <h2
+                          id="link"
+                          data-image="https://res.cloudinary.com/bankai/image/upload/v1636551254/Portfolio/gdyqktez2jovdy2ycfnx.png"
+                        >
+                          Url Shortener
+                        </h2>
+                        <p
+                          id="link"
+                          data-image="https://res.cloudinary.com/bankai/image/upload/v1636551254/Portfolio/gdyqktez2jovdy2ycfnx.png"
+                        >
+                          Personal/ React, Axios, Scss
+                        </p>
+                      </div>
+                      <span className={styles.project__arrow}>
+                        <Icon name="arrow" />
+                      </span>
+                    </div>
+                  </a>
+
+                  <div
+                    className={styles.project}
+                    id="project"
+                    data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
                   >
-                    Ecommerce/ React, Redux, Graphql, Scss
-                  </p>
-                </div>
-                <span className={styles.project__arrow}>
-                  <Icon name="arrow" />
-                </span>
-              </div>
-            </a>
-            <a href="https://www.konga.com/">
-              <div
-                className={styles.project}
-                id="project"
-                data-image="https://res.cloudinary.com/bankai/image/upload/v1636552253/Portfolio/sdsivpsng2ce0seizyni.png"
-              >
-                <div className={styles.project__text} id="project">
-                  <h2
-                    id="link"
-                    data-image="https://res.cloudinary.com/bankai/image/upload/v1636552253/Portfolio/sdsivpsng2ce0seizyni.png"
-                  >
-                    konga
-                  </h2>
-                  <p
-                    id="link"
-                    data-image="https://res.cloudinary.com/bankai/image/upload/v1636552253/Portfolio/sdsivpsng2ce0seizyni.png"
-                  >
-                    Ecommerce/ Next, Redux, Graphql, Scss
-                  </p>
-                </div>
-                <span className={styles.project__arrow}>
-                  <Icon name="arrow" />
-                </span>
-              </div>
-            </a>
-          </div>
-        </section>
-        <section className={styles.about} data-scroll-about id="about">
-          <div className={styles.about__heading}>
-            <h3 id="aboutStuff">About</h3>
-            <div className={styles.about__info}>
-              <p>
-                Hello,<br></br>
-                I'm Temitoyin Ayorinde a front-end developer with over 2 years
-                experience in creating mobile responsive, accessible
-                applications. I enjoy turning complex problems into simple,
-                beautiful and intuitive designs.
-              </p>
-              <p>
-                When I'm not writing code, I spend my time playing basketball,
-                reading, watching anime, cooking and generally having a good
-                time.
-              </p>
-              <p>
-                If you need some inspiration on something to watch, read or
-                listen to checkout my links
-              </p>
-            </div>
-            <div className={styles.about__links}>
-              <a
-                href="https://myanimelist.net/animelist/Toyin18"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p>アニメリスト</p>
-              </a>
-              <a
-                href="https://www.goodreads.com/review/list/142870885?ref=nav_mybooks"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p>Good reads</p>
-              </a>
-              <a
-                href="https://open.spotify.com/playlist/7mTZwyStZ8GK0WIu8Euehn"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p>Spotify playlist</p>
-              </a>
-            </div>
-          </div>
-          <div className={styles.toolStack}>
-            <h4>My Stack</h4>
-            <div class={styles.categories}>
-              <div class="front-end">
-                <h3>Front end</h3>
-                <ul>
-                  <li>HTML5</li>
-                  <li>CSS3</li>
-                  <li>JavaScript</li>
-                  <li>TypeScript</li>
-                  <li>Bootstrap</li>
-                  <li>React</li>
-                  <li>Redux</li>
-                  <li>Next.js</li>
-                  <li>Three.js</li>
-                  <li>Gsap</li>
-                </ul>
-              </div>
-              <div class="back-end">
-                <h3>Back end</h3>
-                <ul>
-                  <li>Node.js</li>
-                  <li>Postman</li>
-                  <li>Express</li>
-                  <li>Docker</li>
-                  <li>Kubernetes</li>
-                </ul>
-              </div>
-              <div class="version-control">
-                <h3>Version control</h3>
-                <ul>
-                  <li>Git</li>
-                  <li>Github</li>
-                </ul>
-              </div>
-              <div class="data-base">
-                <h3>Database</h3>
-                <ul>
-                  <li>MySQL</li>
-                  <li>MongoDb</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className={styles.contact} data-scroll-contact id="contact">
-          <div className={styles.contact__content}>
-            <div className={styles.contact__heading}>
-              <h5>Get in touch</h5>
-              <p>
-                Got a question or proposal, or just want to say hello? Go ahead.
-              </p>
-            </div>
-            <div>
-              <form className={styles.form}>
-                <div className={styles.form__top}>
-                  <div className={styles.form__top_input}>
-                    <label htmlFor="fullName">Your Name</label>
-                    <input
-                      type="text"
-                      name="fullName"
-                      placeholder="Enter your name"
-                    />
+                    <div className={styles.project__text} id="project">
+                      <h2
+                        id="link"
+                        data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
+                      >
+                        Dashood
+                      </h2>
+                      <p
+                        id="link"
+                        data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
+                      >
+                        Logistics/ Next, Redux, Rest, Scss
+                      </p>
+                    </div>
+                    <span className={styles.project__arrow}>
+                      <Icon name="arrow" className={styles.arrow} />
+                    </span>
                   </div>
-                  <div className={styles.form__top_input}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Enter your email address"
-                    />
+                  <a
+                    href="https://new.konga.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div
+                      className={styles.project}
+                      id="project"
+                      data-image="https://res.cloudinary.com/bankai/image/upload/v1636551885/Portfolio/dgfoao6dozilp9vw2kyr.png"
+                    >
+                      <div className={styles.project__text} id="project">
+                        <h2
+                          id="link"
+                          data-image="https://res.cloudinary.com/bankai/image/upload/v1636551885/Portfolio/dgfoao6dozilp9vw2kyr.png"
+                        >
+                          konga SuperApp
+                        </h2>
+                        <p
+                          id="link"
+                          data-image="https://res.cloudinary.com/bankai/image/upload/v1636551885/Portfolio/dgfoao6dozilp9vw2kyr.png"
+                        >
+                          Ecommerce/ React, Redux, Graphql, Scss
+                        </p>
+                      </div>
+                      <span className={styles.project__arrow}>
+                        <Icon name="arrow" />
+                      </span>
+                    </div>
+                  </a>
+                  <a href="https://www.konga.com/">
+                    <div
+                      className={styles.project}
+                      id="project"
+                      data-image="https://res.cloudinary.com/bankai/image/upload/v1636552253/Portfolio/sdsivpsng2ce0seizyni.png"
+                    >
+                      <div className={styles.project__text} id="project">
+                        <h2
+                          id="link"
+                          data-image="https://res.cloudinary.com/bankai/image/upload/v1636552253/Portfolio/sdsivpsng2ce0seizyni.png"
+                        >
+                          konga
+                        </h2>
+                        <p
+                          id="link"
+                          data-image="https://res.cloudinary.com/bankai/image/upload/v1636552253/Portfolio/sdsivpsng2ce0seizyni.png"
+                        >
+                          Ecommerce/ Next, Redux, Graphql, Scss
+                        </p>
+                      </div>
+                      <span className={styles.project__arrow}>
+                        <Icon name="arrow" />
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </section>
+              <section className={styles.about} data-scroll-about id="about">
+                <div className={styles.about__heading}>
+                  <h3 id="aboutStuff">About</h3>
+                  <div className={styles.about__info}>
+                    <p>
+                      Hello,<br></br>
+                      I'm Temitoyin Ayorinde a front-end developer with over 2
+                      years experience in creating mobile responsive, accessible
+                      applications. I enjoy turning complex problems into
+                      simple, beautiful and intuitive designs.
+                    </p>
+                    <p>
+                      When I'm not writing code, I spend my time playing
+                      basketball, reading, watching anime, cooking and generally
+                      having a good time.
+                    </p>
+                    <p>
+                      If you need some inspiration on something to watch, read
+                      or listen to checkout my links
+                    </p>
+                  </div>
+                  <div className={styles.about__links}>
+                    <a
+                      href="https://myanimelist.net/animelist/Toyin18"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <p>アニメリスト</p>
+                    </a>
+                    <a
+                      href="https://www.goodreads.com/review/list/142870885?ref=nav_mybooks"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <p>Good reads</p>
+                    </a>
+                    <a
+                      href="https://open.spotify.com/playlist/7mTZwyStZ8GK0WIu8Euehn"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <p>Spotify playlist</p>
+                    </a>
                   </div>
                 </div>
-                <div className={styles.form__bottom__input}>
-                  <label htmlFor="message">Your Message</label>
-                  <input
-                    type="text"
-                    name="message"
-                    placeholder="Hi I think we need a design system for our products at Company X. How soon can you hop on to discuss this ?"
-                  />
+                <div className={styles.toolStack}>
+                  <h4>My Stack</h4>
+                  <div class={styles.categories}>
+                    <div class="front-end">
+                      <h3>Front end</h3>
+                      <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>TypeScript</li>
+                        <li>Bootstrap</li>
+                        <li>React</li>
+                        <li>Redux</li>
+                        <li>Next.js</li>
+                        <li>Three.js</li>
+                        <li>Gsap</li>
+                      </ul>
+                    </div>
+                    <div class="back-end">
+                      <h3>Back end</h3>
+                      <ul>
+                        <li>Node.js</li>
+                        <li>Postman</li>
+                        <li>Express</li>
+                        <li>Docker</li>
+                        <li>Kubernetes</li>
+                      </ul>
+                    </div>
+                    <div class="version-control">
+                      <h3>Version control</h3>
+                      <ul>
+                        <li>Git</li>
+                        <li>Github</li>
+                      </ul>
+                    </div>
+                    <div class="data-base">
+                      <h3>Database</h3>
+                      <ul>
+                        <li>MySQL</li>
+                        <li>MongoDb</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-              </form>
-              <div class={styles.socialmedia__icons}>
-                {/* <p>Socials: </p> */}
-                <div className={styles.icons}>
-                  <a
-                    href="https://twitter.com/toyin_ayorinde"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i class="fab fa-2x fa-twitter-square"></i>
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/toyin-ayorinde-55a859101/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i class="fab fa-2x fa-linkedin"></i>
-                  </a>
-                  <a
-                    href="https://github.com/Temitoyin"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i class="fab fa-2x fa-github"></i>
-                  </a>
-                  <a
-                    href="https://codepen.io/temitoyin"
-                    target="blank"
-                    rel="noreferrer"
-                  >
-                    <i class="fab fa-2x fa-codepen"></i>
-                  </a>
+              </section>
+              <section
+                className={styles.contact}
+                data-scroll-contact
+                id="contact"
+              >
+                <div className={styles.contact__content}>
+                  <div className={styles.contact__heading}>
+                    <h5>Get in touch</h5>
+                    <p>
+                      Got a question or proposal, or just want to say hello? Go
+                      ahead.
+                    </p>
+                  </div>
+                  <div>
+                    <form className={styles.form}>
+                      <div className={styles.form__top}>
+                        <div className={styles.form__top_input}>
+                          <label htmlFor="fullName">Your Name</label>
+                          <input
+                            type="text"
+                            name="fullName"
+                            placeholder="Enter your name"
+                          />
+                        </div>
+                        <div className={styles.form__top_input}>
+                          <label htmlFor="email">Email</label>
+                          <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                          />
+                        </div>
+                      </div>
+                      <div className={styles.form__bottom__input}>
+                        <label htmlFor="message">Your Message</label>
+                        <input
+                          type="text"
+                          name="message"
+                          placeholder="Hi I think we need a design system for our products at Company X. How soon can you hop on to discuss this ?"
+                        />
+                      </div>
+                    </form>
+                    <div class={styles.socialmedia__icons}>
+                      {/* <p>Socials: </p> */}
+                      <div className={styles.icons}>
+                        <a
+                          href="https://twitter.com/toyin_ayorinde"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <i class="fab fa-2x fa-twitter-square"></i>
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/toyin-ayorinde-55a859101/"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <i class="fab fa-2x fa-linkedin"></i>
+                        </a>
+                        <a
+                          href="https://github.com/Temitoyin"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <i class="fab fa-2x fa-github"></i>
+                        </a>
+                        <a
+                          href="https://codepen.io/temitoyin"
+                          target="blank"
+                          rel="noreferrer"
+                        >
+                          <i class="fab fa-2x fa-codepen"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </section>
+            </main>
+            <footer class={styles.footer}>
+              <div class={styles.footer__copyright}>
+                Temitoyin © 2021<span id="date"></span> Copyright
               </div>
-            </div>
+            </footer>
           </div>
-        </section>
-        <footer class={styles.footer}>
-          <div class={styles.footer__copyright}>
-            Temitoyin © 2021<span id="date"></span> Copyright
-          </div>
-        </footer>
+        </div>
       </div>
     </>
   );
