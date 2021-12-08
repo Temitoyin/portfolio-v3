@@ -23,7 +23,7 @@ function App() {
         top: mouseY,
       },
       ease: "power2.in",
-      // duration: 0.1,
+      duration: 0.1,
     });
   }, [mouseX, mouseY]);
 

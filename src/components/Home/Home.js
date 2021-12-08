@@ -13,6 +13,7 @@ import "utils/Math.js";
 import RGBShiftEffect from "utils/RGBShiftEffect.js";
 import imagesLoaded from "imagesloaded";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ContactUs } from "components/Contact/contact";
 
 const TestFlight2 = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -62,7 +63,6 @@ const TestFlight2 = () => {
         toggleActions: "play complete reset reset",
         start: "top 10%",
         end: "top 75%",
-        // markers: true,
       },
     });
     gsap.to("#aboutlink, #projectlink, #contactlink, #logo", {
@@ -188,7 +188,6 @@ const TestFlight2 = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      console.log(imageRef.current, "we scrolling");
       gsap.set(imageRef.current, {
         css: {
           position: "fixed",
@@ -198,8 +197,8 @@ const TestFlight2 = () => {
     gsap.from("#greeting, #location, #intro__text", {
       opacity: 0,
       y: -50,
-      stagger: 0.2,
-      duration: 1,
+      stagger: 0.1,
+      duration: 0.5,
       ease: "power1.in",
       scrollTrigger: {
         trigger: header.current,
@@ -401,30 +400,35 @@ const TestFlight2 = () => {
                       </span>
                     </div>
                   </a>
-
-                  <div
-                    className={styles.project}
-                    id="project"
-                    data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
+                  <a
+                    href="https://nodetrendz-survey-app-frontend.herokuapp.com/signin"
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    <div className={styles.project__text} id="project">
-                      <h2
-                        id="link"
-                        data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
-                      >
-                        Dashood
-                      </h2>
-                      <p
-                        id="link"
-                        data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
-                      >
-                        Logistics/ Next, Redux, Rest, Scss
-                      </p>
+                    <div
+                      className={styles.project}
+                      id="project"
+                      data-image="https://res.cloudinary.com/bankai/image/upload/v1638965155/Portfolio/h0vy5rhiwjwimd7u2aho.png"
+                    >
+                      <div className={styles.project__text} id="project">
+                        <h2
+                          id="link"
+                          data-image="https://res.cloudinary.com/bankai/image/upload/v1638965155/Portfolio/h0vy5rhiwjwimd7u2aho.png"
+                        >
+                          Survey App
+                        </h2>
+                        <p
+                          id="link"
+                          data-image="https://res.cloudinary.com/bankai/image/upload/v1638965155/Portfolio/h0vy5rhiwjwimd7u2aho.png"
+                        >
+                          Survey/ React, Redux, Rest, Scss
+                        </p>
+                      </div>
+                      <span className={styles.project__arrow}>
+                        <Icon name="arrow" className={styles.arrow} />
+                      </span>
                     </div>
-                    <span className={styles.project__arrow}>
-                      <Icon name="arrow" className={styles.arrow} />
-                    </span>
-                  </div>
+                  </a>
                   <a
                     href="https://new.konga.com/"
                     target="_blank"
@@ -576,78 +580,7 @@ const TestFlight2 = () => {
                 data-scroll-contact
                 id="contact"
               >
-                <div className={styles.contact__content}>
-                  <div className={styles.contact__heading}>
-                    <h5>Get in touch</h5>
-                    <p>
-                      Got a question or proposal, or just want to say hello? Go
-                      ahead.
-                    </p>
-                  </div>
-                  <div>
-                    <form className={styles.form}>
-                      <div className={styles.form__top}>
-                        <div className={styles.form__top_input}>
-                          <label htmlFor="fullName">Your Name</label>
-                          <input
-                            type="text"
-                            name="fullName"
-                            placeholder="Enter your name"
-                          />
-                        </div>
-                        <div className={styles.form__top_input}>
-                          <label htmlFor="email">Email</label>
-                          <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your email address"
-                          />
-                        </div>
-                      </div>
-                      <div className={styles.form__bottom__input}>
-                        <label htmlFor="message">Your Message</label>
-                        <input
-                          type="text"
-                          name="message"
-                          placeholder="Hi I think we need a design system for our products at Company X. How soon can you hop on to discuss this ?"
-                        />
-                      </div>
-                    </form>
-                    <div class={styles.socialmedia__icons}>
-                      {/* <p>Socials: </p> */}
-                      <div className={styles.icons}>
-                        <a
-                          href="https://twitter.com/toyin_ayorinde"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <i class="fab fa-2x fa-twitter-square"></i>
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/toyin-ayorinde-55a859101/"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <i class="fab fa-2x fa-linkedin"></i>
-                        </a>
-                        <a
-                          href="https://github.com/Temitoyin"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <i class="fab fa-2x fa-github"></i>
-                        </a>
-                        <a
-                          href="https://codepen.io/temitoyin"
-                          target="blank"
-                          rel="noreferrer"
-                        >
-                          <i class="fab fa-2x fa-codepen"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <ContactUs />
               </section>
             </main>
             <footer class={styles.footer}>
