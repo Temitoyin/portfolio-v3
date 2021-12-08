@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 export default class EffectShell {
   constructor(
     container = document.body,
@@ -9,11 +9,10 @@ export default class EffectShell {
     this.itemsWrapper = itemsWrapper;
     this.effectLinks = effectLinks;
 
-    console.log(this.itemsWrapper, this.effectLinks, 'boom');
+    console.log(this.itemsWrapper, this.effectLinks, "boom");
     if (!this.container || !this.itemsWrapper || !this.effectLinks) return;
     this.setup();
     this.initEffectShell().then(() => {
-      console.log("load finished");
       this.isLoaded = true;
       if (this.isMouseOver) this.onMouseOver(this.tempItemIndex);
       this.tempItemIndex = null;
@@ -79,7 +78,6 @@ export default class EffectShell {
     const THREEtextureLoader = new THREE.TextureLoader();
     this.items.forEach((item, index) => {
       // create textures
-      console.log(item, "texture")
       promises.push(
         this.loadTexture(
           THREEtextureLoader,
@@ -96,7 +94,6 @@ export default class EffectShell {
         promises.forEach((promise, index) => {
           // assign texture to item
           this.items[index].texture = promise.texture;
-            console.log(promise.texture, "texture");
         });
         resolve();
       });
@@ -189,9 +186,9 @@ export default class EffectShell {
     // create Array of items including element, image and index
     return items.map((item, index) => ({
       element: item,
-      img: item.querySelector('img') || null,
-      index: index
-    }))
+      img: item.querySelector("img") || null,
+      index: index,
+    }));
   }
 
   loadTexture(loader, url, index) {
@@ -201,7 +198,6 @@ export default class EffectShell {
         resolve({ texture: null, index });
         return;
       }
-      console.log("textureloading")
       // load a resource
       loader.load(
         // resource URL

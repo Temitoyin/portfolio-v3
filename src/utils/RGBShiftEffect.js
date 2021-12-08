@@ -72,13 +72,11 @@ export default class RGBShiftEffect extends EffectShell {
       transparent: true
     })
     this.plane = new THREE.Mesh(this.geometry, this.material)
-    console.log(this.plane, 'plane')
     this.scene.add(this.plane)
   }
 
   onMouseEnter() {
     if (!this.currentItem || !this.isMouseOver) {
-      console.log(this.uniforms.uAlpha, "item");
       this.isMouseOver = true
       // show plane
       gsap.to(this.uniforms.uAlpha, {
@@ -143,7 +141,6 @@ export default class RGBShiftEffect extends EffectShell {
     this.currentItem = this.items[index]
     if (!this.currentItem.texture) return
 
-    console.log(this.currentItem.img, 'currentItemImg')
     // compute image ratio
     let imageRatio =
       this.currentItem.img.naturalWidth / this.currentItem.img.naturalHeight

@@ -188,7 +188,6 @@ const TestFlight2 = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      console.log(imageRef.current, "we scrolling");
       gsap.set(imageRef.current, {
         css: {
           position: "fixed",
