@@ -401,30 +401,35 @@ const TestFlight2 = () => {
                       </span>
                     </div>
                   </a>
-
+                  <a
+                    href="https://nodetrendz-survey-app-frontend.herokuapp.com/signin"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                   <div
                     className={styles.project}
                     id="project"
-                    data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
+                    data-image="https://res.cloudinary.com/bankai/image/upload/v1638965155/Portfolio/h0vy5rhiwjwimd7u2aho.png"
                   >
                     <div className={styles.project__text} id="project">
                       <h2
                         id="link"
-                        data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
+                        data-image="https://res.cloudinary.com/bankai/image/upload/v1638965155/Portfolio/h0vy5rhiwjwimd7u2aho.png"
                       >
-                        Dashood
+                        Survey App
                       </h2>
                       <p
                         id="link"
-                        data-image="http://www.todaysparent.com/wp-content/uploads/2014/02/Mint1.jpg"
+                        data-image="https://res.cloudinary.com/bankai/image/upload/v1638965155/Portfolio/h0vy5rhiwjwimd7u2aho.png"
                       >
-                        Logistics/ Next, Redux, Rest, Scss
+                        Survey/ React, Redux, Rest, Scss
                       </p>
                     </div>
                     <span className={styles.project__arrow}>
                       <Icon name="arrow" className={styles.arrow} />
                     </span>
                   </div>
+                  </a>
                   <a
                     href="https://new.konga.com/"
                     target="_blank"
