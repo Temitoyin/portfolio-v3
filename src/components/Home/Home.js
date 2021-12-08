@@ -197,8 +197,8 @@ const TestFlight2 = () => {
     gsap.from("#greeting, #location, #intro__text", {
       opacity: 0,
       y: -50,
-      stagger: 0.2,
-      duration: 1,
+      stagger: 0.1,
+      duration: 0.5,
       ease: "power1.in",
       scrollTrigger: {
         trigger: header.current,
