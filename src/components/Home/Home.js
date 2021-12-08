@@ -106,6 +106,19 @@ const TestFlight2 = () => {
         end: "top 75%",
       },
     });
+    gsap.to("#contact", {
+      css: {
+        backgroundColor: "#e9ecef",
+      },
+      duration: 1,
+      scrollTrigger: {
+        trigger: "#contact",
+        toggleActions: "play complete complete reverse",
+        scrub: true,
+        start: "top 90%",
+        end: "top 75%",
+      },
+    });
     gsap.to("#aboutlink, #projectlink, #contactlink, #logo", {
       css: {
         color: "#1f1d36",
@@ -194,45 +207,38 @@ const TestFlight2 = () => {
         },
       });
     });
-    gsap.from("#greeting, #location, #intro__text", {
-      opacity: 0,
-      y: -50,
-      stagger: 0.1,
-      duration: 0.5,
-      ease: "power1.in",
-      scrollTrigger: {
-        trigger: header.current,
-        start: "top 30%",
-        end: "bottom 90%",
-        toggleActions: "play complete none none",
-      },
-    });
-    gsap.from("#navigation", {
-      opacity: 0,
-      y: -100,
-      duration: 0.6,
-      ease: "power2.in",
-    });
   }, []);
 
   useEffect(() => {
+    const tl = gsap.timeline({ paused: true });
     window.onload = function () {
-      gsap.fromTo(
-        "#loader",
-        {
-          opacity: 1,
-          duration: 2,
-          css: {
-            backgroundColor: "black",
-          },
-        },
-        {
-          y: 0,
-          opacity: 0,
-          zIndex: -1,
-        }
-      );
+      tl.play();
     };
+    tl.to("#loader", {
+      y: 0,
+      opacity: 0,
+      duration: 2,
+      zIndex: -1,
+    })
+      .from("#navigation", {
+        opacity: 0,
+        y: -100,
+        duration: 0.6,
+        ease: "power2.in",
+      })
+      .from("#greeting, #location, #intro__text", {
+        opacity: 0,
+        y: -50,
+        stagger: 0.1,
+        duration: 0.5,
+        ease: "power1.in",
+        // scrollTrigger: {
+        //   trigger: header.current,
+        //   start: "top 30%",
+        //   end: "bottom 90%",
+        //   toggleActions: "play complete none none",
+        // },
+      });
     const container = document.body;
     effectLinks = gsap.utils.toArray("#effect");
     const preloadImages = () => {

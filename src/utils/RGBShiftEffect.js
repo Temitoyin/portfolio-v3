@@ -1,35 +1,40 @@
-import * as THREE from 'three';
-import EffectShell from './EffectShell';
-import gsap from "gsap"
+import * as THREE from "three";
+import EffectShell from "./EffectShell";
+import gsap from "gsap";
 export default class RGBShiftEffect extends EffectShell {
-  constructor(container = document.body, itemsWrapper = null, links, options = {}) {
-    super(container, itemsWrapper, links)
-    if (!this.container || !this.itemsWrapper) return
+  constructor(
+    container = document.body,
+    itemsWrapper = null,
+    links,
+    options = {}
+  ) {
+    super(container, itemsWrapper, links);
+    if (!this.container || !this.itemsWrapper) return;
 
-    options.strength = options.strength || 0.25
-    this.options = options
+    options.strength = options.strength || 0.25;
+    this.options = options;
 
-    this.init()
+    this.init();
   }
 
   init() {
-    this.position = new THREE.Vector3(0, 0, 0)
-    this.scale = new THREE.Vector3(1, 1, 1)
-    this.geometry = new THREE.PlaneBufferGeometry(1, 1, 30, 32)
+    this.position = new THREE.Vector3(0, 0, 0);
+    this.scale = new THREE.Vector3(1, 1, 1);
+    this.geometry = new THREE.PlaneBufferGeometry(1, 1, 20, 22);
     this.uniforms = {
       uTime: {
-        value: 0
+        value: 0,
       },
       uTexture: {
-        value: null
+        value: null,
       },
       uOffset: {
-        value: new THREE.Vector2(0.0, 0.0)
+        value: new THREE.Vector2(0.0, 0.0),
       },
       uAlpha: {
-        value: 0
-      }
-    }
+        value: 0,
+      },
+    };
     this.material = new THREE.ShaderMaterial({
       uniforms: this.uniforms,
       vertexShader: `
@@ -69,15 +74,15 @@ export default class RGBShiftEffect extends EffectShell {
           gl_FragColor = vec4(color,uAlpha);
         }
       `,
-      transparent: true
-    })
-    this.plane = new THREE.Mesh(this.geometry, this.material)
-    this.scene.add(this.plane)
+      transparent: true,
+    });
+    this.plane = new THREE.Mesh(this.geometry, this.material);
+    this.scene.add(this.plane);
   }
 
   onMouseEnter() {
     if (!this.currentItem || !this.isMouseOver) {
-      this.isMouseOver = true
+      this.isMouseOver = true;
       // show plane
       gsap.to(this.uniforms.uAlpha, {
         duration: 0.5,
@@ -102,15 +107,15 @@ export default class RGBShiftEffect extends EffectShell {
       1,
       -this.viewSize.width / 2,
       this.viewSize.width / 2
-    )
+    );
     let y = this.mouse.y.map(
       -1,
       1,
       -this.viewSize.height / 2,
       this.viewSize.height / 2
-    )
+    );
 
-    this.position = new THREE.Vector3(x, y, 0)
+    this.position = new THREE.Vector3(x, y, 0);
     gsap.to(this.plane.position, {
       duration: 1,
       x: x,
@@ -125,27 +130,27 @@ export default class RGBShiftEffect extends EffectShell {
     let offset = this.plane.position
       .clone()
       .sub(this.position)
-      .multiplyScalar(-this.options.strength)
-    this.uniforms.uOffset.value = offset
+      .multiplyScalar(-this.options.strength);
+    this.uniforms.uOffset.value = offset;
   }
 
   onMouseOver(index, e) {
-    if (!this.isLoaded) return
-    this.onMouseEnter()
-    if (this.currentItem && this.currentItem.index === index) return
-    this.onTargetChange(index)
+    if (!this.isLoaded) return;
+    this.onMouseEnter();
+    if (this.currentItem && this.currentItem.index === index) return;
+    this.onTargetChange(index);
   }
 
   onTargetChange(index) {
     // item target changed
-    this.currentItem = this.items[index]
-    if (!this.currentItem.texture) return
+    this.currentItem = this.items[index];
+    if (!this.currentItem.texture) return;
 
     // compute image ratio
     let imageRatio =
-      this.currentItem.img.naturalWidth / this.currentItem.img.naturalHeight
-    this.scale = new THREE.Vector3(imageRatio, 1, 1)
-    this.uniforms.uTexture.value = this.currentItem.texture
-    this.plane.scale.copy(this.scale)
+      this.currentItem.img.naturalWidth / this.currentItem.img.naturalHeight;
+    this.scale = new THREE.Vector3(imageRatio, 1, 1);
+    this.uniforms.uTexture.value = this.currentItem.texture;
+    this.plane.scale.copy(this.scale);
   }
 }
