@@ -8,7 +8,7 @@ $col-two: #090910;
   background-color: black;
   position: fixed;
   height: 100vh;
-  // z-index: 3;
+  z-index: 1000;
 }
 
 .testFlight2 {
@@ -387,7 +387,7 @@ $col-two: #090910;
   min-height: 100vh;
   margin: 0 auto;
   padding: to-rem(0 300);
-  background-color: #e9ecef;
+  background-color: black;
   color: black;
   @include media("<=phone") {
     padding: to-rem(0);
