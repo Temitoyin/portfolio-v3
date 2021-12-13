@@ -40,59 +40,6 @@ const TestFlight2 = () => {
         end: "top 75%",
       },
     });
-    gsap.to("#navigation", {
-      css: {
-        backgroundColor: "#e9ecef",
-      },
-      duration: 1,
-      scrollTrigger: {
-        trigger: worksContainer.current,
-        toggleActions: "play complete reset reset",
-        start: "top 10%",
-        end: "top 75%",
-        // markers: true,
-      },
-    });
-    gsap.to("#navigation", {
-      css: {
-        backgroundColor: "#e9ecef",
-      },
-      duration: 1,
-      scrollTrigger: {
-        trigger: "#contact",
-        toggleActions: "play complete reset reset",
-        start: "top 10%",
-        end: "top 75%",
-      },
-    });
-    gsap.to("#aboutlink, #projectlink, #contactlink, #logo", {
-      css: {
-        // color: "black",
-        backgroundImage:
-          "linear-gradient(90deg, #0300e2, #0300e2 50%, #000000 0 )",
-      },
-      duration: 1,
-      scrollTrigger: {
-        trigger: worksContainer.current,
-        toggleActions: "play complete reset reset",
-        start: "top 10%",
-        // end: "top 75%",
-        // markers: true,
-      },
-    });
-    gsap.to("#navigation", {
-      css: {
-        backgroundColor: "#dfe7fd",
-      },
-      duration: 1,
-      scrollTrigger: {
-        trigger: "#about",
-        toggleActions: "play complete reverse reset",
-        start: "top 10%",
-        // end: "top 75%",
-        // markers: true,
-      },
-    });
     gsap.to("#about", {
       css: {
         backgroundColor: "#dfe7fd",
@@ -232,12 +179,6 @@ const TestFlight2 = () => {
         stagger: 0.1,
         duration: 0.5,
         ease: "power1.in",
-        // scrollTrigger: {
-        //   trigger: header.current,
-        //   start: "top 30%",
-        //   end: "bottom 90%",
-        //   toggleActions: "play complete none none",
-        // },
       });
     const container = document.body;
     effectLinks = gsap.utils.toArray("#effect");
@@ -270,8 +211,8 @@ const TestFlight2 = () => {
       <div>
         <div className={styles.viewPort} ref={mainContainer}>
           <div className={styles.testFlight2} data-scroll-container id="main">
-            <div className={styles.navigationWrapper}>
-              <nav className={styles.navigation} id="navigation">
+            <div className={styles.navigationWrapper} id="navigation">
+              <nav className={styles.navigation}>
                 <div className={styles.left}>
                   <Link to="main" smooth="true">
                     <h1 id="logo">Bankai Dev</h1>
@@ -538,8 +479,8 @@ const TestFlight2 = () => {
                 </div>
                 <div className={styles.toolStack}>
                   <h4>My Stack</h4>
-                  <div class={styles.categories}>
-                    <div class="front-end">
+                  <div className={styles.categories}>
+                    <div className="front-end">
                       <h3>Front end</h3>
                       <ul>
                         <li>HTML5</li>
@@ -554,7 +495,7 @@ const TestFlight2 = () => {
                         <li>Gsap</li>
                       </ul>
                     </div>
-                    <div class="back-end">
+                    <div className="back-end">
                       <h3>Back end</h3>
                       <ul>
                         <li>Node.js</li>
@@ -564,14 +505,14 @@ const TestFlight2 = () => {
                         <li>Kubernetes</li>
                       </ul>
                     </div>
-                    <div class="version-control">
+                    <div className="version-control">
                       <h3>Version control</h3>
                       <ul>
                         <li>Git</li>
                         <li>Github</li>
                       </ul>
                     </div>
-                    <div class="data-base">
+                    <div className="data-base">
                       <h3>Database</h3>
                       <ul>
                         <li>MySQL</li>
@@ -589,8 +530,8 @@ const TestFlight2 = () => {
                 <ContactUs />
               </section>
             </main>
-            <footer class={styles.footer}>
-              <div class={styles.footer__copyright}>
+            <footer className={styles.footer}>
+              <div className={styles.footer__copyright}>
                 Temitoyin © 2021<span id="date"></span> Copyright
               </div>
             </footer>

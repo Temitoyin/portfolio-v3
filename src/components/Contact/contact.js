@@ -66,7 +66,7 @@ export const ContactUs = () => {
               Send
             </button>
           </form>
-          <div class={styles.socialmedia__icons}>
+          <div className={styles.socialmedia__icons}>
             {/* <p>Socials: </p> */}
             <div className={styles.icons}>
               <a
@@ -74,28 +74,28 @@ export const ContactUs = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i class="fab fa-2x fa-twitter-square"></i>
+                <i className="fab fa-2x fa-twitter-square"></i>
               </a>
               <a
                 href="https://www.linkedin.com/in/toyin-ayorinde-55a859101/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <i class="fab fa-2x fa-linkedin"></i>
+                <i className="fab fa-2x fa-linkedin"></i>
               </a>
               <a
                 href="https://github.com/Temitoyin"
                 target="_blank"
                 rel="noreferrer"
               >
-                <i class="fab fa-2x fa-github"></i>
+                <i className="fab fa-2x fa-github"></i>
               </a>
               <a
                 href="https://codepen.io/temitoyin"
                 target="blank"
                 rel="noreferrer"
               >
-                <i class="fab fa-2x fa-codepen"></i>
+                <i className="fab fa-2x fa-codepen"></i>
               </a>
             </div>
           </div>
