@@ -45,14 +45,24 @@ $col-two: #090910;
   background-color: #1f1d36;
 }
 
-.navigation {
+.navigationWrapper {
   position: fixed;
-  width: 100vw;
+  width: 100%;
   top: 0;
+  z-index: 100;
+  background-color: #1f1d36;
+}
+.navigation {
+  width: 100%;
+  max-width: to-rem(1440);
+  margin: 0 auto;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+  @include media(">=LGdesktop") {
+  }
   .left {
     margin-left: to-rem(40);
     h1 {
@@ -274,7 +284,7 @@ $col-two: #090910;
   &__heading {
     // display: flex;
     // align-items: center;
-    padding-top: to-rem(32);
+    padding-top: to-rem(55);
     max-width: to-rem(1440);
     margin: 0 auto;
     h3 {
@@ -346,9 +356,12 @@ $col-two: #090910;
     }
     div {
       text-align: center;
-      &:hover {
-        box-shadow: 1px 1px 12px -3px rgba(0, 0, 0, 0.2);
+      @include media(">tablet") {
+        &:hover {
+          box-shadow: 1px 1px 12px -3px rgba(0, 0, 0, 0.2);
+        }
       }
+
       @include media("<=phone") {
         width: 100%;
         text-align: left;

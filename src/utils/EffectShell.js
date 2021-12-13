@@ -9,7 +9,6 @@ export default class EffectShell {
     this.itemsWrapper = itemsWrapper;
     this.effectLinks = effectLinks;
 
-    console.log(this.itemsWrapper, this.effectLinks, "boom");
     if (!this.container || !this.itemsWrapper || !this.effectLinks) return;
     this.setup();
     this.initEffectShell().then(() => {
