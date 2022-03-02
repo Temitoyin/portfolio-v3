@@ -24,6 +24,19 @@ const TestFlight2 = () => {
   let effectWrapper = useRef(null);
   let effectLinks;
 
+  let cursor = useRef(null);
+
+  useEffect(() => {
+    window.document.addEventListener("mousemove", (event) => {
+      gsap.set(cursor.current, {
+        css: {
+          left: event.clientX,
+          top: event.clientY,
+        },
+        duration: 0.016,
+      });
+    });
+  });
   useEffect(() => {
     const items = gsap.utils.toArray("#project");
     const links = gsap.utils.toArray("#link");
@@ -31,7 +44,7 @@ const TestFlight2 = () => {
       css: {
         backgroundColor: "#e9ecef",
       },
-      duration: 1,
+      duration: 0.5,
       scrollTrigger: {
         trigger: worksContainer.current,
         toggleActions: "play complete complete reverse",
@@ -44,7 +57,7 @@ const TestFlight2 = () => {
       css: {
         backgroundColor: "#dfe7fd",
       },
-      duration: 1,
+      duration: 0.5,
       scrollTrigger: {
         trigger: "#about",
         toggleActions: "play complete complete reverse",
@@ -57,7 +70,7 @@ const TestFlight2 = () => {
       css: {
         backgroundColor: "#e9ecef",
       },
-      duration: 1,
+      duration: 0.5,
       scrollTrigger: {
         trigger: "#contact",
         toggleActions: "play complete complete reverse",
@@ -135,6 +148,7 @@ const TestFlight2 = () => {
         y: -50,
         duration: 0.8,
         ease: "power2.in",
+        stagger: 1,
         scrollTrigger: {
           trigger: el,
           toggleActions: "play complete reverse reset",
@@ -208,7 +222,8 @@ const TestFlight2 = () => {
   return (
     <>
       <div id="loader" className={styles.loader}></div>
-      <div>
+      <div className={styles.home}>
+        <div className={styles.cursor} id="cursor" ref={cursor}></div>
         <div className={styles.viewPort} ref={mainContainer}>
           <div className={styles.testFlight2} data-scroll-container id="main">
             <div className={styles.navigationWrapper} id="navigation">
@@ -438,7 +453,7 @@ const TestFlight2 = () => {
                   <div className={styles.about__info}>
                     <p>
                       Hello,<br></br>
-                      I'm Temitoyin Ayorinde a front-end developer with over 2
+                      I'm Temitoyin Ayorinde a front-end developer with over 3
                       years experience in creating mobile responsive, accessible
                       applications. I enjoy turning complex problems into
                       simple, beautiful and intuitive designs.
