@@ -44,6 +44,9 @@ $col-two: #090910;
   min-height: 100vh;
   background-color: #1f1d36;
 }
+.home {
+  cursor: none;
+}
 
 .navigationWrapper {
   position: fixed;
@@ -273,7 +276,7 @@ $col-two: #090910;
   }
 }
 .about {
-  padding: to-rem(0 30);
+  padding: to-rem(60 30);
   min-height: 100vh;
   background-color: black;
   color: #1f1d36;
@@ -356,11 +359,6 @@ $col-two: #090910;
     }
     div {
       text-align: center;
-      @include media(">tablet") {
-        &:hover {
-          box-shadow: 1px 1px 12px -3px rgba(0, 0, 0, 0.2);
-        }
-      }
 
       @include media("<=phone") {
         width: 100%;
@@ -424,14 +422,20 @@ $col-two: #090910;
   }
 }
 
-.itemCssMask img {
-  mask-image: url(http://yoksel.github.io/Sandbox/img/tiles/tile-transparent-black.png),
-    linear-gradient(-45deg, black 20%, transparent 50%);
-  mask-repeat: space;
-}
-.item--svg-mask-html img,
-.item--svg-mask-svg image {
-  mask: url(#masking);
+@include media(">=tablet") {
+  .cursor {
+    position: fixed;
+    background-color: black;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    user-select: none;
+    pointer-events: none;
+    transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+      0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
+    z-index: 10000;
+    transform: scale(1);
+  }
 }
 
 @keyframes forward {

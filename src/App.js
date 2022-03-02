@@ -5,27 +5,19 @@ import gsap from "gsap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  let cursor = useRef(null);
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
+  // let cursor = useRef(null);
 
-  useEffect(() => {
-    window.addEventListener("mousemove", (event) => {
-      setMouseX(event.clientX);
-      setMouseY(event.clientY);
-    });
-    return {};
-  }, [mouseX, mouseY]);
-  useEffect(() => {
-    gsap.set(cursor.current, {
-      css: {
-        left: mouseX,
-        top: mouseY,
-      },
-      ease: "power2.in",
-      duration: 0.1,
-    });
-  }, [mouseX, mouseY]);
+  // useEffect(() => {
+  //   window.document.addEventListener("mousemove", (event) => {
+  //     gsap.set(cursor.current, {
+  //       css: {
+  //         left: event.clientX,
+  //         top: event.clientY,
+  //       },
+  //       duration: 0.016,
+  //     });
+  //   });
+  // });
 
   return (
     <Router>
@@ -38,7 +30,7 @@ function App() {
             </Switch>
             {/* </div> */}
           </div>
-          <div className="cursor" id="cursor" ref={cursor}></div>
+          {/* <div className="cursor" id="cursor" ref={cursor}></div> */}
         </div>
       </div>
     </Router>
